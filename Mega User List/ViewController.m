@@ -56,37 +56,7 @@ static NSString *cellIndentifier = @"UserDisplayCell";
     
     userLabel = (UILabel *)[cell viewWithTag:101];
     userLabel.text =[dataSource objectAtIndex:indexPath.row ];
-    
-    //    if(indexPath.row <[ dataSource count ] ){
-    //
-    //
-    //
-    //
-    //    }
-    //    else{
-    //        if (!self.noMoreResultsAvail) {
-    //            spinner.hidden =NO;
-    //            cell.textLabel.text=nil;
-    //            spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-    //            spinner.frame = CGRectMake(150, 10, 24, 50);
-    //            [cell addSubview:spinner];
-    //            if ([dataSource count] >= 10) {
-    //                [spinner startAnimating];
-    //            }
-    //        }
-    //        else{
-    //
-    //            [spinner stopAnimating];
-    //            spinner.hidden=YES;
-    //
-    //            cell.textLabel.text=nil;
-    //
-    //            UILabel* loadingLabel = [[UILabel alloc]init];
-    //            loadingLabel.numberOfLines = 0;
-    //            [cell addSubview:loadingLabel];
-    //        }
-    //
-    //    }
+
     
     return cell;
 }
