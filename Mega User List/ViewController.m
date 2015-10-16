@@ -19,7 +19,7 @@
     UILabel *userLabel;
     
 }
-static NSString *cellIndentifier = @"UserDisplayCell";
+NSString *cellIndentifier = @"UserDisplayCell";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -31,6 +31,7 @@ static NSString *cellIndentifier = @"UserDisplayCell";
     dataStartIndex = 0;
     
     dataSource = [ NSMutableArray arrayWithArray: [self.userList.userList subarrayWithRange: NSMakeRange(dataStartIndex, TABLE_DISPLAY_COUNT) ] ];
+    [self.userListTable reloadData];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -46,17 +47,18 @@ static NSString *cellIndentifier = @"UserDisplayCell";
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
     
-    
     cell = [tableView dequeueReusableCellWithIdentifier:cellIndentifier];
     
-    if(cell == nil){
-        
-        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIndentifier];
-    }
+//    if(cell == nil){
+//        
+//        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIndentifier];
+//        
+//        userLabel = [[ UILabel alloc] init ];
+//    }
     
     userLabel = (UILabel *)[cell viewWithTag:101];
-    userLabel.text =[dataSource objectAtIndex:indexPath.row ];
-
+    
+    [ userLabel setText:[dataSource objectAtIndex:indexPath.row ]];
     
     return cell;
 }
