@@ -14,6 +14,8 @@
 		110DF2B41BD0C7FD007C718D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 110DF2B31BD0C7FD007C718D /* Images.xcassets */; };
 		110DF2B71BD0C7FD007C718D /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 110DF2B51BD0C7FD007C718D /* LaunchScreen.xib */; };
 		110DF2C31BD0C7FD007C718D /* Mega_User_ListTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 110DF2C21BD0C7FD007C718D /* Mega_User_ListTests.m */; };
+		110DF2D21BD0C893007C718D /* UserList.m in Sources */ = {isa = PBXBuildFile; fileRef = 110DF2D11BD0C893007C718D /* UserList.m */; };
+		110DF2D41BD0D46D007C718D /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 110DF2D31BD0D46D007C718D /* icon.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +42,9 @@
 		110DF2BC1BD0C7FD007C718D /* Mega User ListTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Mega User ListTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		110DF2C11BD0C7FD007C718D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		110DF2C21BD0C7FD007C718D /* Mega_User_ListTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Mega_User_ListTests.m; sourceTree = "<group>"; };
+		110DF2D01BD0C893007C718D /* UserList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserList.h; sourceTree = "<group>"; };
+		110DF2D11BD0C893007C718D /* UserList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserList.m; sourceTree = "<group>"; };
+		110DF2D31BD0D46D007C718D /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +86,7 @@
 		110DF2A51BD0C7FD007C718D /* Mega User List */ = {
 			isa = PBXGroup;
 			children = (
+				110DF2CC1BD0C84B007C718D /* User Data */,
 				110DF2AA1BD0C7FD007C718D /* AppDelegate.h */,
 				110DF2AB1BD0C7FD007C718D /* AppDelegate.m */,
 				110DF2AD1BD0C7FD007C718D /* ViewController.h */,
@@ -117,6 +123,16 @@
 				110DF2C11BD0C7FD007C718D /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		110DF2CC1BD0C84B007C718D /* User Data */ = {
+			isa = PBXGroup;
+			children = (
+				110DF2D31BD0D46D007C718D /* icon.png */,
+				110DF2D01BD0C893007C718D /* UserList.h */,
+				110DF2D11BD0C893007C718D /* UserList.m */,
+			);
+			name = "User Data";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -199,6 +215,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				110DF2D41BD0D46D007C718D /* icon.png in Resources */,
 				110DF2B21BD0C7FD007C718D /* Main.storyboard in Resources */,
 				110DF2B71BD0C7FD007C718D /* LaunchScreen.xib in Resources */,
 				110DF2B41BD0C7FD007C718D /* Images.xcassets in Resources */,
@@ -219,6 +236,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				110DF2D21BD0C893007C718D /* UserList.m in Sources */,
 				110DF2AF1BD0C7FD007C718D /* ViewController.m in Sources */,
 				110DF2AC1BD0C7FD007C718D /* AppDelegate.m in Sources */,
 				110DF2A91BD0C7FD007C718D /* main.m in Sources */,
