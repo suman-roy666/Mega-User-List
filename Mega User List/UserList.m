@@ -18,15 +18,23 @@
         
         _userList = [[NSMutableArray alloc] init ];
         
-        int userCount = 0;
         NSString *userName;
+        NSString *imageURL ;
         
-        for (; userCount < 50; userCount++ ) {
+        for (int userCount = 1, imageCount = 1 ; userCount <= 50; userCount++, imageCount++ ) {
             
-            userName = [NSString stringWithFormat:@"user %d", (userCount + 1) ];
+            userName = [NSString stringWithFormat:@"user %d", (userCount) ];
+            imageURL = [ NSString stringWithFormat: @"http://www.robots.ox.ac.uk/~vgg/research/flowers_demo/images/flower_%d.jpg", imageCount];
             
-            [ _userList addObject:userName ];
+            if (imageCount == 10) {
+                imageCount = 0;
+            }
+            
+            [ _userList addObject:
+                    [ [ NSMutableDictionary alloc ] initWithObjectsAndKeys: userName,@"UserName",imageURL,@"UserImage", nil ] ];
         }
+        
+        
         
     }
     

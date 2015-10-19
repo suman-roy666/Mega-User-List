@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="DNg-US-Nh5">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -14,6 +15,7 @@
                         <viewControllerLayoutGuide type="bottom" id="FNZ-3K-wDJ"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="WFP-5m-qM9">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="73" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="GVm-R3-OC8">
@@ -34,7 +36,7 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" tag="101" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading..." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hM6-2u-2Ib">
                                                     <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                     <variation key="widthClass=compact" fixedFrame="YES">
                                                         <rect key="frame" x="80" y="8" width="98" height="35"/>
@@ -86,12 +88,12 @@
                                 <exclude reference="kc5-3k-3HS"/>
                             </mask>
                             <mask key="constraints">
+                                <exclude reference="6ct-79-pY3"/>
+                                <exclude reference="CaG-xo-X7n"/>
+                                <exclude reference="XZc-96-9Xf"/>
                                 <exclude reference="DkQ-YT-2vY"/>
                                 <exclude reference="IdG-1T-thh"/>
                                 <exclude reference="dtW-px-mzY"/>
-                                <exclude reference="CaG-xo-X7n"/>
-                                <exclude reference="XZc-96-9Xf"/>
-                                <exclude reference="6ct-79-pY3"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
@@ -100,12 +102,12 @@
                                 <include reference="kc5-3k-3HS"/>
                             </mask>
                             <mask key="constraints">
+                                <include reference="6ct-79-pY3"/>
+                                <include reference="CaG-xo-X7n"/>
+                                <include reference="XZc-96-9Xf"/>
                                 <include reference="DkQ-YT-2vY"/>
                                 <include reference="IdG-1T-thh"/>
                                 <include reference="dtW-px-mzY"/>
-                                <include reference="CaG-xo-X7n"/>
-                                <include reference="XZc-96-9Xf"/>
-                                <include reference="6ct-79-pY3"/>
                             </mask>
                         </variation>
                     </view>
@@ -116,7 +118,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bOv-r7-PYs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="958.5" y="198"/>
+            <point key="canvasLocation" x="817.5" y="180"/>
         </scene>
     </scenes>
     <resources>
