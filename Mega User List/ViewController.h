@@ -7,14 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "UserList.h"
+#import "UserManager.h"
 
 @interface ViewController : UIViewController <UITableViewDelegate>
 
 @property (strong, nonatomic) IBOutlet UITableView *userListTable;
 @property (weak, nonatomic) IBOutlet UIButton *LoadMoreButton;
-
-@property (strong) UserList *userList;
 
 @end
 

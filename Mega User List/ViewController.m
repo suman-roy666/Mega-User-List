@@ -7,37 +7,40 @@
 //
 
 #import "ViewController.h"
-#import "UserList.h"
+#import "UserManager.h"
+#import "UserDetails.h"
+#import "UserDisplayCell.h"
 
 #define TABLE_DISPLAY_COUNT 10
 
 @implementation ViewController{
     
-    NSMutableArray *dataSource;
     NSUInteger dataStartIndex;
-    UITableViewCell *cell;
-    UILabel *userLabel;
-    UIImageView *userImageView;
     NSOperationQueue *imageDowloadQueue;
+    UserManager *userManager;
 }
-NSString *cellIndentifier = @"UserDisplayCell";
+
+const NSString *cellIndentifier = @"UserDisplayCell";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     
     
-    self.userList = [[ UserList alloc] init ];
+    [ self.userListTable registerClass:[UserDisplayCell class] forCellReuseIdentifier:cellIndentifier ];
+    
+    [ self.userListTable registerNib:[UINib nibWithNibName:NSStringFromClass([UserDisplayCell class]) bundle:nil] forCellReuseIdentifier:cellIndentifier];
+    
+
+    
+    userManager = [ UserManager getSharedInstance ];
     
     dataStartIndex = 0;
-    
-    dataSource = [ NSMutableArray arrayWithArray: [self.userList.userList
-                                                   subarrayWithRange: NSMakeRange(dataStartIndex, TABLE_DISPLAY_COUNT) ] ];
     
     imageDowloadQueue = [[ NSOperationQueue alloc ] init ];
     //
     //    for (NSDictionary *dict in self.userList.userList) {
-    //        NSLog(@"%@:: %@", [ dict valueForKey:@"UserName"], [ dict valueForKey:@"UserImage"] );
+    //        NSLog(@"%@:: %@", [ dict valueForKey:@"UserName"], [ dict valueForKey:@"image"] );
     //    }
     
     [self.userListTable reloadData];
@@ -50,55 +53,45 @@ NSString *cellIndentifier = @"UserDisplayCell";
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
-    return dataSource.count;
+    return [ userManager userCount ];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
+    UserDisplayCell *cell = [ self.userListTable dequeueReusableCellWithIdentifier:cellIndentifier forIndexPath:indexPath];
     
-    cell = [tableView dequeueReusableCellWithIdentifier:cellIndentifier];
+    UserDetails *currentUser = [ userManager.userArray objectAtIndex:indexPath.row ];
     
-    if(cell == nil){
+    [ cell.userNameLabel setText:[ currentUser valueForKey:@"userName" ]];
+    
+    NSDictionary *userImage = [ currentUser valueForKey:@"userImageUrl"];
+    
+    if ( [ userImage valueForKey:@"status" ] ) {
         
-        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIndentifier];
-        
-        userLabel = [[ UILabel alloc] init ];
-    }
-    
-    NSMutableDictionary *currentValue = [dataSource objectAtIndex:indexPath.row ];
-    
-    userLabel = (UILabel *)[cell viewWithTag:101];
-    
-    [ userLabel setText:[ currentValue valueForKey:@"UserName" ]];
-    
-    if ( [ currentValue valueForKey:@"status" ] ) {
-        
-        if ( [ [ currentValue valueForKey:@"status" ] isEqualToString: @"completed" ]
-            && [ currentValue valueForKey:@"UserImage" ]
-            && [[ currentValue valueForKey:@"UserImage" ] isKindOfClass: [ UIImage class] ] ) {
+        if ( [ [ userImage valueForKey:@"status" ] isEqualToString: @"completed" ]
+            && [ userImage valueForKey:@"image" ]
+            && [[ userImage valueForKey:@"image" ] isKindOfClass: [ UIImage class] ] ) {
             
-            
-            userImageView = (( UIImageView* )[ cell viewWithTag:100 ]);
-            
-            [ userImageView setContentMode: UIViewContentModeScaleAspectFit ];
-            
-            [ userImageView setImage:[ currentValue valueForKey:@"UserImage" ] ];
-            
+            [ cell.userImageView setImage:[ userImage valueForKey:@"image" ] ];
+            [ cell.userImageView setContentMode: UIViewContentModeScaleAspectFill ];
         }
         
     } else {
         
-        [ currentValue setValue:@"inprogress" forKey:@"status" ];
+        [ cell.userImageView setImage:nil ];
+
         
+        [ userImage setValue:@"inprogress" forKey:@"status" ];
+                
         [ imageDowloadQueue addOperationWithBlock: ^{
             
-            UIImage *userImage = [ UIImage imageWithData:
+            UIImage *image = [ UIImage imageWithData:
                                   [ NSData dataWithContentsOfURL:
-                                   [ NSURL URLWithString: [ currentValue valueForKey:@"UserImage" ]] ]];
+                                   [ NSURL URLWithString: [ userImage valueForKey:@"image" ]] ]];
             
-            [ currentValue setValue:userImage forKey:@"UserImage" ];
+            [ userImage setValue:image forKey:@"image" ];
             
-            [ currentValue setValue:@"completed" forKey:@"status" ];
+            [ userImage setValue:@"completed" forKey:@"status" ];
             
             [[ NSOperationQueue mainQueue ] addOperationWithBlock: ^{
                 
@@ -113,21 +106,29 @@ NSString *cellIndentifier = @"UserDisplayCell";
     return cell;
 }
 
-#pragma LoadMore Method::
+#pragma mark LoadMore Method::
 
 - (IBAction)loadMoreTableData:(id)sender {
     
-    dataStartIndex = dataStartIndex + TABLE_DISPLAY_COUNT;
+    [ userManager addMoreUsers:10 ];
     
-    [ dataSource  addObjectsFromArray: [self.userList.userList
-                                        subarrayWithRange: NSMakeRange(dataStartIndex, TABLE_DISPLAY_COUNT) ] ];
     [ self.userListTable reloadData ];
     
-    if ( dataStartIndex >= ([ self.userList.userList count] - TABLE_DISPLAY_COUNT ) ) {
-        
+    if ( [ userManager userCount ] >= 100 ) {
         [ self.LoadMoreButton setEnabled:NO ];
-        
     }
+    
+//    dataStartIndex = dataStartIndex + TABLE_DISPLAY_COUNT;
+//    
+//    [ dataSource  addObjectsFromArray: [self.userList.userArray
+//                                        subarrayWithRange: NSMakeRange(dataStartIndex, TABLE_DISPLAY_COUNT) ] ];
+//    [ self.userListTable reloadData ];
+//    
+//    if ( dataStartIndex >= ([ self.userList.userArray count] - TABLE_DISPLAY_COUNT ) ) {
+//        
+//        [ self.LoadMoreButton setEnabled:NO ];
+//        
+//    }
 }
 
 
