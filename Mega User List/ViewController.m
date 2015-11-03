@@ -117,18 +117,6 @@ const NSString *cellIndentifier = @"UserDisplayCell";
     if ( [ userManager userCount ] >= 100 ) {
         [ self.LoadMoreButton setEnabled:NO ];
     }
-    
-//    dataStartIndex = dataStartIndex + TABLE_DISPLAY_COUNT;
-//    
-//    [ dataSource  addObjectsFromArray: [self.userList.userArray
-//                                        subarrayWithRange: NSMakeRange(dataStartIndex, TABLE_DISPLAY_COUNT) ] ];
-//    [ self.userListTable reloadData ];
-//    
-//    if ( dataStartIndex >= ([ self.userList.userArray count] - TABLE_DISPLAY_COUNT ) ) {
-//        
-//        [ self.LoadMoreButton setEnabled:NO ];
-//        
-//    }
 }
 
 

@@ -40,8 +40,8 @@
                         <constraints>
                             <constraint firstItem="FNZ-3K-wDJ" firstAttribute="top" secondItem="kc5-3k-3HS" secondAttribute="bottom" constant="20" id="6ct-79-pY3"/>
                             <constraint firstItem="kc5-3k-3HS" firstAttribute="top" secondItem="GVm-R3-OC8" secondAttribute="bottom" constant="8" id="CaG-xo-X7n"/>
-                            <constraint firstItem="GVm-R3-OC8" firstAttribute="leading" secondItem="WFP-5m-qM9" secondAttribute="leadingMargin" constant="-16" id="DkQ-YT-2vY"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="GVm-R3-OC8" secondAttribute="trailing" constant="-16" id="IdG-1T-thh"/>
+                            <constraint firstItem="GVm-R3-OC8" firstAttribute="leading" secondItem="WFP-5m-qM9" secondAttribute="leadingMargin" id="DkQ-YT-2vY"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="GVm-R3-OC8" secondAttribute="trailing" id="IdG-1T-thh"/>
                             <constraint firstItem="kc5-3k-3HS" firstAttribute="leading" secondItem="WFP-5m-qM9" secondAttribute="leadingMargin" constant="147" id="XZc-96-9Xf"/>
                             <constraint firstItem="GVm-R3-OC8" firstAttribute="top" secondItem="Ihe-ny-2Sv" secondAttribute="bottom" constant="8" id="dtW-px-mzY"/>
                         </constraints>
